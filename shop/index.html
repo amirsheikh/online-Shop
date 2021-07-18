@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>فروشگاه اینترنتی</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/stylesheet.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="topnav">
+            <a class="active" href="#home">
+                <img src="img/logo.png" class="logo" />
+            </a>
+            <a href="#">صفحه اول</a>
+            <a href="#item-box-id">محصولات</a>
+
+            <div dir="rtl" class="logIn" href="#home" id="login-div">
+                <div style="cursor: pointer; display: inline-block;margin-left: 10px;"
+                    onclick="popup(event, 'login-popup')">ورود</div>
+                <div style="display: inline-block;margin-left: 10px;">/</div>
+                <div style="cursor: pointer; display: inline-block;" onclick="popup(event, 'signup-popup')">ثبت نام
+                </div>
+            </div>
+            <div class="dropdown" id="after-login-div" style="display: none;">
+
+                <button id = "name-after-login-button" class="dropbtn">امیرحسین شیخ‌الاسلامی
+                    <img src="img/down.png" class="image-down" />
+                </button>
+
+                <div class="dropdown-content">
+                    <a class="first" href="/profile.php">پروفایل
+                        <img src="img/user.png" class="profile">
+                    </a>
+                    <a onclick="logout()" class="last" href="">خروج
+                        <img src="img/exit.png" class="exit">
+                    </a>
+                </div>
+            </div>
+    </header>    
+    <div style="margin-top: 10px;background-color: #f3f2f8;" class="body">
+        <div class="class1" id="image-head">
+            <div dir="rtl" class="maintext">در محصولات سایت جستجو کنید..</div>
+            <form class="search">
+                <input id='search-input' dir="rtl" class="search-form" type="text" placeholder="نام محصول را وارد کنید ..." id="fname"
+                    name="fname">
+            </form>
+            <button dir="rtl" onclick="searchPro()" class="search-botton" href="#">جستجو کنید </button>
+            <img src="img/clock.png" class="clock">
+        </div>
+        <div class="shop-box">
+            <div class="first-box">
+                <div class="sub-text-box" dir="rtl">مرتب سازی بر اساس:</div>
+                <div class="second-text-box" id="price_div" onclick = "sortByPrice(this)" dir="rtl">قیمت</div>
+                <div class="first-text-box" id = "sell_div" onclick = "sortBySell(this)" dir="rtl">بیشترین خرید</div>
+            </div>
+            <div class="second-box">
+                <div id = "item-box-id" class="item-box">
+                </div>
+                <div id = "filter-box-div" class="filter-box">
+                    <div style="margin-top: 10px; display: block;">:دسته بندی ها</div>
+                    <div
+                        style="width:95%;border-width:thin;color:rgb(202, 202, 202);border-top-style:dashed;margin-top: 5px;margin-bottom: 5px;">
+                    </div>
+                    <label for="html">دسته بندی 1</label>
+                    <input type="radio" class="radio" id="html" name="fav_language" value="HTML">
+                    <br>
+                    <label for="css">دسته بندی 2</label>
+                    <input type="radio" class="radio" id="css" name="fav_language" value="CSS">
+                    <br>
+                    <label for="javascript">دسته بندی 3</label>
+                    <input type="radio" class="radio" id="javascript" name="fav_language" value="JavaScript">
+                    <br><br>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p dir="rtl">تمام حقوق برای توسعه دهندگان امیر‌صدرا و امیر‌حسین شیخ‌الاسلامی محفوظ می‌باشد.</p>
+        </footer>
+    </div>
+
+    <div class="box" style= " display: none;width: 300px;" id="login-popup">
+        <div style="top:0;right: 0;position: absolute;margin-right: 10px; margin-top: 5px;color: white;cursor: pointer;"
+            onclick="closepopup('login-popup')">-</div>
+        <h1 class="title">فروشگاه - ورود</h1>
+        <div style="font-size: 0;">
+            <div id="v-email-on-p-login" class= "valid-check">!</div>
+            <input id= "email-on-p-login" type="email" onchange="check(this,'v-email-on-p-login')" placeholder="...ایمیل خود را وارد کنید" name="email" class="field-input">
+            <label class="field-title" for="email">ایمیل</label>
+        </div>
+        <div style="font-size: 0;">
+            <div id="v-pass-on-p-login" class= "valid-check">!</div>
+            <input id = "pass-on-p-login" type="password" onchange="check(this,'v-pass-on-p-login')" placeholder="...رمز عبور خود را وارد کنید" name="pass" class="field-input">
+            <label class="field-title" for="pass">رمز عبور</label>
+        </div>
+        <div class="button" onclick="login(this,'login-popup','email-on-p-login','pass-on-p-login')">ورود</div>
+    </div>
+    <div class="box" style="display: none;" id="signup-popup">
+        <div style="top:0;right: 0;position: absolute;margin-right: 10px; margin-top: 5px;color: white;cursor: pointer;"
+            onclick="closepopup('signup-popup')">-</div>
+        <h1 class="title">فروشگاه - ثبت نام</h1>
+        <div style="font-size: 0;">
+            <div id= "v-lname-on-p-signup" class= "valid-check">!</div>
+            <input id = "lname-on-p-signup" dir="rtl" type="text" style="text-align: right;" onchange="check(this,'v-lname-on-p-signup')" placeholder="نام خانوادگی خود را وارد کنید..."
+                name="lastname" class="field-input">
+            <label class="field-title" style="margin-right: 15px;" for="name">نام خانوادگی</label>
+            <div id = "v-name-on-p-signup" class= "valid-check">!</div>
+            <input id="name-on-p-signup" dir="rtl" type="text" style="text-align: right;" onchange="check(this,'v-name-on-p-signup')" placeholder="نام خود را وارد کنید..." name="name"
+                class="field-input">
+            <label class="field-title" for="name">نام</label>
+        </div>
+        <div style="font-size: 0;">
+            <div id = "v-pass-on-p-signup" class= "valid-check">!</div>
+            <input id = "pass-on-p-signup" type="password" onchange="check(this,'v-pass-on-p-signup')"  placeholder="حداقل 8 حرف شامل عدد و حرف می‌باشد" name="pass" class="field-input">
+            <label class="field-title" style="margin-right: 15px;" for="pass">رمز عبور</label>
+            <div id = "v-email-on-p-signup" class= "valid-check">!</div>
+            <input id="email-on-p-signup" type="email" onchange="check(this,'v-email-on-p-signup')"  placeholder="...ایمیل خود را وارد کنید" name="email" class="field-input">
+            <label class="field-title" for="email">ایمیل</label>
+        </div>
+        <div style="font-size: 0;">
+            <div id = 'v-address-on-p-signup' class= "valid-check">!</div>
+            <textarea id="address-on-p-signup" style="height: 50px;resize: none; " placeholder="...ادرس خود را وارد کنید" name="address"
+                class="field-input" onchange="check(this,'v-address-on-p-signup')"></textarea>
+            <label class="field-title" style="height: 34px;padding-top: 18px;" for="address">آدرس</label>
+        </div>
+        <div class="button" onclick="signup('signup-popup','email-on-p-signup','pass-on-p-signup','name-on-p-signup','lname-on-p-signup','address-on-p-signup')">ثبت نام</div>
+    </div>
+    <div id="shadow" style="position: fixed; width: 100%; height: 1000px;z-index: 3; background-color: rgba(0, 0, 0, 0.712);display: none;"></div>
+    <script src="scripts/Script.js"></script>
+    <script>
+        var imageHead = document.getElementById("image-head");
+        var i = 2;
+        setInterval(function () {
+            imageHead.classList.remove(imageHead.className)
+            imageHead.classList.add("class" + i)
+            i = i + 1;
+            if (i == 4) {
+                  i = 1;
+            }
+        }, 5000);     
+        const newDiv = document.createElement("div");
+        newDiv.innerText = 1;
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", "product.php", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var json = JSON.parse(xhr.responseText);
+                pagingC(newDiv,json.length,json,0);
+        
+            }
+        };
+        xhr.send();
+
+        let xh = new XMLHttpRequest();
+        xh.open("GET", "get_category.php", true);
+        xh.setRequestHeader("Content-Type", "application/json");
+        xh.onreadystatechange = function () {
+            if (xh.readyState === 4 && xh.status === 200) {
+                var json = JSON.parse(xh.responseText);
+                categorySet(json.length,json);
+        
+            }
+        };
+        xh.send();
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>پروفایل</title>
+<link href="css/stylesheet.css" rel="stylesheet">
+</head>
+<body style="background-color: rgb(219, 219, 219);">
+    <header>
+        <div class="topnav">
+            <a class="active" href="#home" >
+                <img src="img/logo.png" class = "logo"/>
+            </a>
+            <a href="/">صفحه اول</a>
+            <a href="/#item-box-id">محصولات</a>
+
+            <div dir="rtl" class="logIn" href="#home" style="display:none;" id="login-div">
+                <div style="cursor: pointer; display: inline-block;margin-left: 10px;"
+                    onclick="popup(event, 'login-popup')">ورود</div>
+                <div style="display: inline-block;margin-left: 10px;">/</div>
+                <div style="cursor: pointer; display: inline-block;" onclick="popup(event, 'signup-popup')">ثبت نام
+                </div>
+            </div>
+
+            <div id = "after-login-div" class="dropdown">
+
+                <button id="name-after-login-button" class="dropbtn">امیرحسین شیخ‌الاسلامی
+                    <img src="img/down.png" class="image-down" />
+                </button>
+
+                <div id = "after-login-div" class="dropdown-content">
+                    <a class="last" onclick="logout()" style="padding-top: 22px;" href="/">خروج
+                        <img src="img/exit.png" class="exit">
+                    </a>
+                </div>
+            </div>
+    </header>
+    <div dir="rtl" class="welcome-p">
+        <h5 dir="rtl" id="welcome-profile" style = "display: inline-block;"></h5>
+        <p style="display: inline-block;">|</p>
+        <h5 dir="rtl" id = "balance-profile" style="display: inline-block;"></h5>
+        <div class="button" onclick="editbalance()" style="width: 70px;margin-right: 30px;color: black;">افزایش اعتبار</div>
+    </div>
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'transaction')">تراکنش ها</button>
+        <button class="tablinks active" onclick="openCity(event, 'prof-d')">مشخصات</button>
+    </div>
+
+    <div id="prof-d" style="display: block;" class="tabcontent">
+        <div class= "box" style="margin-top: 10px;padding-top: 4%;padding-bottom: 4%;top: 0;transform: translateY(0%);">
+            <h1 class = "title">مشخصات</h1>
+            <div style="font-size: 0;">
+                <div id = "v-lname-on-pr-change" class= "valid-check">!</div>
+                <input id="lname-on-pr-change" dir="rtl" type="text" onchange="check(this,'v-lname-on-pr-change')" style="text-align: right;" placeholder="نام خانوادگی خود را وارد کنید..." name="lastname" class = "field-input">
+                <label class="field-title" style="margin-right: 15px;" for="name">نام خانوادگی</label>
+                <div id = "v-name-on-pr-change" class= "valid-check">!</div>
+                <input id = "name-on-pr-change" dir="rtl" type="text" onchange="check(this,'v-name-on-pr-change')" style="text-align: right;" placeholder="نام خود را وارد کنید..." name="name" class = "field-input">
+                <label class="field-title" for="name">نام</label>
+            </div>
+            <div style="font-size: 0;"> 
+                <div dir = 'rtl' id = "v-pass-on-pr-change" class= "valid-check">!</div>
+                <input id = 'pass-on-pr-change' type="password"  onchange="check(this,'v-pass-on-pr-change')" placeholder=".حداقل 8 حرف شامل عدد و حرف می‌باشد" name="pass" class = "field-input">
+                <label class="field-title" style="margin-right: 15px;" for="pass">رمز عبور</label>
+                <input id = "email-on-pr-change" type="email"  placeholder="...ایمیل خود را وارد کنید" name="email" class = "field-input">
+                <label class="field-title" for="email">ایمیل</label>
+            </div>
+            <div style="font-size: 0;">
+                <div id = "v-address-on-pr-change" class= "valid-check">!</div>
+                <textarea id="address-on-pr-change" style="height: 50px;resize: none;"  placeholder="...ادرس خود را وارد کنید" 
+                name="address" class = "field-input" onchange="check(this,'v-address-on-pr-change')" ></textarea>
+                <label class="field-title" style="height: 34px;padding-top: 18px;" for="address">آدرس</label>  
+            </div>
+            <div class = "button" onclick="edit('pass-on-pr-change','name-on-pr-change','lname-on-pr-change','address-on-pr-change')">ویرایش</div>
+        </div>
+    </div>
+
+    <div id="transaction" class="tabcontent">
+        <div class="items-p main-item">
+            <div class="item-detail-p">آدرس ارسال شده</div>
+            <div class="item-detail-p">قیمت پرداخت شده</div>
+            <div class="item-detail-p">کالا</div>
+            <div class="item-detail-p">کد پیگیری</div>
+        </div>
+        <div class="items-p">
+            <div class="item-detail-p">میداننسلثه هثعلبض هلهلبه4هبله4بل سپاه</div>
+            <div dir="rtl" class = "item-detail-p">1000 تومان </div>
+            <div class="item-detail-p">samsung Galaxy s7</div>
+            <div class="item-detail-p">10240002020</div>
+        </div>
+        <div class="items-p">
+            <div class="item-detail-p">میداننسلثه هثعلبض هلهلبه4هبله4بل سپاه</div>
+            <div dir="rtl" class = "item-detail-p">1000 تومان </div>
+            <div class="item-detail-p">samsung Galaxy s7</div>
+            <div class="item-detail-p">10240002020</div>
+        </div>
+    </div>
+
+<script>
+function openCity(evt, type) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(type).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+<script src="scripts/Script.js"></script>
+</body>
+</html> 
